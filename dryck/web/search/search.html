@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- FRAMEWORKS -->
+		<link rel="stylesheet" href="web/css/animate.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!-- FRAMEWORKS -->
+		<link rel="stylesheet" href='web/search/search.css'>
+
+		<!-- FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+		<!-- FONTS -->
+		<title>Drycker</title>
+	</head>
+	<body>
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="web/search/search.js"></script>
+	<script type='text/javascript' src='web/knockout-3.3.0.js'></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="web/js/wow.min.js"></script>
+	<!-- SCRIPTS -->
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="jumbotron">
+							<h2>Här kan du söka på vad du vill.</h2>
+							<button class="btn btn-default" data-bind="click:signin, text:'logga in'"></button>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2"
+								<div class="col-lg-6">
+								    <div class="input-group">
+								      <input type="text" class="form-control" id="searchValue" placeholder="Hitta drycken. Sök på vad fan du vill" data-bind="value: searchValue, valueUpdate:'afterkeydown'">
+								      <div class="input-group-btn">
+								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span data-bind="text: sortValue"></span> <span class="caret"></span></button>
+								        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+								          <li><a href="#" data-bind="click: highprice">Dyrast först</a></li>
+								          <li><a href="#" data-bind="click: lowprice">Billigast först</a></li>
+								        </ul>
+								      </div><!-- /btn-group -->
+								    </div><!-- /input-group -->
+								  </div><!-- /.col-lg-6 -->
+								<!--<span data-bind="text: BeveragesToShow().length"></span>-->
+							</div>
+						</div>
+
+						<div class="row">
+								<div class="col-md-10 col-md-offset-1 beveragesContainer">
+								<!-- ko foreach: BeveragesToShow -->	
+									<div class="beverages col-md-3" data-bind="click:open, attr:{id: nr, class:(selected()? 'beverages col-md-3 selectedbeverage wow fadeInUpBig animated': 'beverages col-md-3 wow fadeInUpBig animated' )} , event: { mouseover: toggle, mouseout:toggle },css: { hover: selected },">
+										<div class="beveragesimage" data-bind=" style: {background:'#fff url('+url+')'}"></div>
+										<img class="flag" data-bind=" attr:{src: 'resources/flags/flags/48/'+Ursprunglandnamn+'.png'}">
+										<ul>
+											<li><h4 data-bind="text:name" class="beveragetitle"><h4></li>
+											<li><b>Kattegori: </b><span data-bind="text: Varugrupp"></span><li>
+											<li><b>Alkoholhalt: </b><span data-bind="text: percent"><span></li>
+											<li><b>Pris: </b><span data-bind="text:Prisinklmoms + ' kr/st'"></span></li>
+										</ul>
+									</div>
+								<!-- /ko --> 
+								</div>
+
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-bind="with:activeBeverage">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+									        
+									        <span class="fa fa-glass"></span><h4 class="modal-title" id="myModalLabel" data-bind="text: name"></h4>
+									      </div>
+									      <div class="modal-body">
+									      	<div class="row">
+									      		<div class="col-md-6">
+									      		<h3 data-bind="text: name"></h3>
+										      	<ul>
+										      		<li data-bind="text: name2, visible: name2"></li>
+										      		<li data-bind="text: 'Volym: ' + Volymiml + ' ml'"></li>
+										      		<li data-bind="text: 'Pris/liter: ' + literprice + ' kr'"></li>
+										      		<li data-bind="text: 'Pris ink. moms: ' + Prisinklmoms + ' kr'"></li>
+										      		<li data-bind="text: 'Producent: ' + Producent"></li>
+										      		<li data-bind="text: Varugrupp"></li>
+										      		<li data-bind="text: Ursprunglandnamn"></li>
+										      	</ul>
+										      	</div>
+										      	<div class="col-md-6">
+										      		<button class="btn btn-default" data-bind="click:addtofavorite">Lägg till som favorit</button>
+										      	</div>
+									      	</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
+								
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
+
+
+
+						

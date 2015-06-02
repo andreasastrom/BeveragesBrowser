@@ -1,0 +1,64 @@
+body{
+	background-color: #f2f2f2;
+}
+.beveragetitle{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 30px;
+}
+.beveragesitems{
+	font-family: 'Playfair Display', serif;
+}
+#searchvalue{
+	width: 200px;
+}
+@media (min-width: 750px){
+	.beveragesContainer{
+		width: auto;
+		left: 6%;
+		right: 5%;
+		margin-top: 20px;
+	}
+	.beverages{
+		margin: 5px;
+		background-color: #fff;
+		height: 400px;
+		min-width: 300px;
+		cursor: pointer;
+	}
+	.beverages ul{
+		list-style-type: none;
+		margin-left: -40px;
+
+	}
+	.beveragesimage{
+		margin-top: 15px;
+		height: 200px;
+		background-size: 100px;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	.selectedbeverage{
+		border: 2px solid #ccc;
+		border-radius: 2px;
+	}
+	.flag{
+		float: right;
+		position: absolute;
+		left: 230px;
+		top: 180px;
+	}
+}
+
+
+@media (max-width: 750px){
+	.beverages{
+		margin: 5px;
+		background-color: #fff;
+		height: 200px;
+	}
+	.beverages ul{
+		list-style-type: none;
+		margin-left: -40px;
+
+	}
+}
