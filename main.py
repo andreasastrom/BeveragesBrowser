@@ -1,20 +1,20 @@
 import json
 from bottle import Bottle, run, static_file, redirect, request, error
 import sys
-import unirest
+#import unirest
 import xmltodict, json
+import urllib.request
 
 
 def gemig():
-	print "Laddar in data fran systembolaget"
-	response = unirest.get("http://www.systembolaget.se/Assortment.aspx?Format=Xml")
-	val = xmltodict.parse(response.body,encoding='utf-8')
-	val = json.dumps(val)
-	print "Laddning klar"
-	return val
+    print("Laddar in data fran systembolaget")    
+    resp = urllib.request.urlopen("http://www.systembolaget.se/Assortment.aspx?Format=Xml").read() 
+    val = xmltodict.parse(resp,encoding='utf-8')
+    val = json.dumps(val)    
+    return val
 	
-#data = gemig()
-data = ""
+data = gemig()
+#data = ""
 activeusers = []
 
 app = Bottle()
@@ -34,7 +34,7 @@ def getAllApps():
 def login():
     error = None
     global activeusers
-    print request.forms.get('username')
+    print(request.forms.get('username'))
     if request.method == 'POST':
     	#print(request)
         if request.forms.get('username') == 'admin' and request.forms.get('password') == 'admin':
@@ -64,6 +64,6 @@ def send_static_main():
 run(app, host='localhost', port=1337)
 
 
-print "Goodbye"
+print("Goodbye")
 
 
