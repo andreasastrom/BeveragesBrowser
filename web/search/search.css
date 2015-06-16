@@ -34,7 +34,7 @@ body{
 		margin-top: 15px;
 		height: 200px;
 		background-size: 100px;
-		background-repeat: no-repeat;
+		background: no-repeat;
 		background-position: center;
 	}
 	.selectedbeverage{
